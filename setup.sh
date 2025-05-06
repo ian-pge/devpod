@@ -2,8 +2,9 @@
 set -euo pipefail
 
 CHEZ="$HOME/.local/bin/chezmoi"
+SRC="$HOME/.local/share/chezmoi"
 
-if [[ ! -x $CHEZ ]]; then
+if [[ ! -x $SRC ]]; then
    echo "Installing chezmoi..."
    sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
    echo "Apply chezmoi config..."
