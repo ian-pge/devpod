@@ -42,6 +42,10 @@
               set -g fish_greeting
               fish_vi_key_bindings
 
+              function starship_transient_prompt_func
+                starship module time
+              end
+
               # newline after each command (valid fish syntax)
               function __newline_postexec --on-event fish_postexec
                 echo
