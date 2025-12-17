@@ -1,9 +1,1 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-cd "${HOME}/dotfiles"
-
-out="$(nix build ".#homeConfigurations.zed.activationPackage" --no-link --print-out-paths)"
-"$out/activate"
-
-fastfetch
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin" init --apply https://github.com/ian-pge/chezmoi.git
