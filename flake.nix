@@ -115,7 +115,7 @@
 
               # include $time and $container so they actually show
               format = ''
-                $time$os $username@$hostname $directory $git_branch$container$line_break$character
+                $os $username@$hostname $directory $git_branch$container$line_break$character
               '';
               add_newline = false;
 
