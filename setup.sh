@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd "${HOME}/dotfiles"
+CHEZ="$HOME/.local/bin/chezmoi"
+SRC="$HOME/.local/share/chezmoi"
 
-out="$(nix build ".#homeConfigurations.zed.activationPackage" --no-link --print-out-paths)"
-"$out/activate"
+if [[ ! -x $SRC ]]; then
+   echo "Installing chezmoi..."
+   sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+   echo "Apply chezmoi config..."
+   "$CHEZ" init https://github.com/ian-pge/chezmoi.git --apply
+else
+   echo "Update chezmoi config..."
+   "$CHEZ" update
+fi
